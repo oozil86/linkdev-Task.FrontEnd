@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between p-3 border-bottom tx-16">
+          <div class="d-flex align-items-center">
+            <h1 class="card-title">Jobs</h1>
+          </div>
+          <div class="d-flex">
+            <button class="btn btn-primary" (click)="OnJobEdited(undefined,JobModal)">Add New Job</button>
+          </div>
+        </div>
+
+
+        <ng-template #JobModal let-modal>
+          <div class="modal-header">
+            <h5 class="modal-title">New Job</h5>
+            <button type="button" class="btn-close" (click)="close();" aria-label="Close"></button>
+          </div>
+          <app-job-edit (JobInserted)="OnJobAdded();close();">
+
+          </app-job-edit>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="close();">Close</button>
+          </div>
+        </ng-template>
+
+        <app-akila-standard-data-table [datasource]="rows" [loading]="loading" [cols]="cols" [totalRecords]="totalRecords"
+                                       (EntityDelete)="OnJobDeleted($event);"
+                                       (EntityEdit)="OnJobEdited($event,JobModal);"
+                                       (EntitiesLoad)="OnJobLoaded($event);"
+                                       >
+
+        </app-akila-standard-data-table>
+
+      </div>
+     
+    </div>
+  </div>
+</div>

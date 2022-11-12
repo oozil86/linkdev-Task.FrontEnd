@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="col-12 grid-margin">
+    <div class="card">
+      <div class="d-flex justify-content-center p-3 rounded-bottom">
+        <ngb-pagination [collectionSize]="totalRecords"
+                        [(page)]="currentPage" [pageSize]="3"
+                        [maxSize]="5" (pageChange)="PageChange(currentPage)" [boundaryLinks]="true"></ngb-pagination>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row profile-body">
+  <!-- left wrapper start -->
+  <div class="d-none d-md-block col-md-4 col-xl-3 left-wrapper">
+    <div class="card rounded">
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <h6 class="card-title mb-0">Jobs</h6>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- left wrapper end -->
+  <!-- middle wrapper start -->
+  <div class="col-md-8 middle-wrapper">
+    <div class="row">
+
+      <div class="col-md-12 grid-margin" *ngIf="rows.length===0">
+        <div class="card rounded">
+          <div class="card-header">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center">
+                <div class="ms-2">
+                  <h1>No Open Jobs Found</h1>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 grid-margin" *ngFor="let row of rows">
+        <div class="card rounded">
+          <div class="card-header">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center">
+                <div class="ms-2">
+                  <h1 class="tx-11 text-muted">{{row.category}}</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="col-md-6">
+              <h6 class="form-label">{{row.name}}</h6>
+            </div>
+            <br />
+            <div class="col-md-6">
+              <h3>Skills</h3>
+              <label class="form-label">{{row.skills}} </label>
+            </div>
+            <br />
+            <div class="col-md-6">
+              <h3>Responsibilities</h3>
+              <label class="form-label">{{row.responsibilities}}</label>
+            </div>
+            <br />
+            <div class="col-md-6">
+              <h3>Description</h3>
+              <label class="form-label"> {{row.description}}</label>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="d-flex post-actions">
+              <button type="submit" (click)="Apply(row,ApplicationModal)" class="btn btn-primary btn-lg me-1 mb-1 mb-md-0">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- middle wrapper end -->
+
+</div>
+
+
+<ng-template #ApplicationModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">New Application</h5>
+    <button type="button" class="btn-close" (click)="close();" aria-label="Close"></button>
+  </div>
+  <app-job-application (ApplicationInserted)="OnApplicationAdded();close();">
+
+  </app-job-application>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="close();">Close</button>
+  </div>
+</ng-template>

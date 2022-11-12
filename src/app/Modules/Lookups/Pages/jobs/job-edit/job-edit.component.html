@@ -1,0 +1,91 @@
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-12 grid-margin">
+      <div class="card">
+        <div class="card-body">
+          <form class="forms-sample" [formGroup]="DataForm" (ngSubmit)="SubmitData()">
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Name</label>
+                <input class="form-control" placeholder="Name" formControlName="Name"  [(ngModel)]="job.name" id="Name" />
+                <p class="text-danger mt-1" *ngIf="ValidateInput('Name')">required error</p>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Category</label>
+                <input class="form-control" placeholder="Category" formControlName="Category"  [(ngModel)]="job.category" id="Category" />
+                <p class="text-danger mt-1" *ngIf="ValidateInput('Category')">required error</p>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Description</label>
+                <textarea class="form-control" placeholder="Description" formControlName="Description"  [(ngModel)]="job.description" id="Description" >
+                </textarea>
+                <p class="text-danger mt-1" *ngIf="ValidateInput('Description')">required error</p>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">MaximumApplications</label>
+                <input class="form-control" placeholder="MaximumApplications" formControlName="MaximumApplications"  [(ngModel)]="job.maximumApplications" id="MaximumApplications" />
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label">Responsibilities</label>
+                <textarea class="form-control" placeholder="Responsibilities" formControlName="Responsibilities"  [(ngModel)]="job.responsibilities" id="Responsibilities" >
+                </textarea>
+                <p class="text-danger mt-1" *ngIf="ValidateInput('Responsibilities')">required error</p>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Skills</label>
+                <textarea class="form-control" placeholder="Skills" formControlName="Skills"  [(ngModel)]="job.skills" id="Skills">
+                </textarea>
+                <p class="text-danger mt-1" *ngIf="ValidateInput('Skills')">required error</p>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label class="form-label">ValidityDurationFrom</label>
+                <div class="input-group">
+                  <input class="form-control" placeholder="yyyy-mm-dd"
+                         name="ValidityDurationFrom" id="ValidityDurationFrom"
+                         ngbDatepicker #From="ngbDatepicker" formControlName="ValidityDurationFrom"
+                         [(ngModel)]="validityDurationFrom_selectedDate">
+                  <button class="input-group-text" type="button" (click)="From.toggle()">
+                    <i class="feather icon-calendar icon-md text-muted"></i>
+                  </button>
+                  <p class="text-danger mt-1" *ngIf="ValidateInput('ValidityDurationFrom')">required error</p>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">ValidityDurationTo</label>
+                <div class="input-group">
+                  <input class="form-control" placeholder="yyyy-mm-dd"
+                         name="ValidityDurationTo" id="ValidityDurationTo" ngbDatepicker #To="ngbDatepicker"
+                         formControlName="ValidityDurationTo" [(ngModel)]="validityDurationTo_selectedDate">
+                  <button class="input-group-text" type="button" (click)="To.toggle()">
+                    <i class="feather icon-calendar icon-md text-muted"></i>
+                  </button>
+                  <p class="text-danger mt-1" *ngIf="ValidateInput('validityDurationTo_selectedDate')">required error</p>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="d-flex justify-content-center mt-4">
+              <button type="submit" class="btn btn-primary btn-lg me-1 mb-1 mb-md-0" *ngIf="!EnableSubmit">Submit</button>
+              <button class="btn btn-primary btn-lg me-1 mb-1 mb-md-0" type="button" *ngIf="EnableSubmit" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

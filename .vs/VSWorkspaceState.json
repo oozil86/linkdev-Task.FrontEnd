@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\Modules",
+    "\\src\\app\\Modules\\Lookups",
+    "\\src\\app\\Modules\\Lookups\\Pages",
+    "\\src\\app\\Modules\\Lookups\\Pages\\jobs",
+    "\\src\\app\\Modules\\Shared",
+    "\\src\\assets",
+    "\\src\\shared",
+    "\\src\\shared\\service-proxies"
+  ],
+  "SelectedNode": "\\src\\app\\Modules\\Lookups\\Pages\\jobs\\jobs.component.html",
+  "PreviewInSolutionExplorer": false
+}
